@@ -1,0 +1,43 @@
+#include <iostream>
+#include <chrono>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+using namespace std::chrono;
+
+int era(int n) 
+{
+    vector<bool> lp(n + 1, true);
+    lp[0] = lp[1] = false;
+    for (int i = 2; i * i <= n; i++) 
+    {
+        if (lp[i]) 
+        {
+            for (int j = i * i; j <= n; j += i) 
+            {
+                lp[j] = false;
+            }
+        }
+    }
+    int count = 0;
+    for (int i = 2; i <= n; ++i) {
+        if (lp[i]) count++;
+    }
+    return count;
+}
+
+int main() 
+{
+   auto start = high_resolution_clock::now();
+
+    int n = 1000000;  
+    cout << era(n) << endl;
+
+  auto stop = high_resolution_clock::now();
+  auto duration = duration_cast<microseconds>(stop - start);
+
+  cout << duration.count() << endl;
+
+    return 0;
+}
