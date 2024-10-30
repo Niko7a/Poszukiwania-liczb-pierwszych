@@ -1,5 +1,5 @@
 #include <iostream>
-#include <chrono>
+#include <ctime>
 #include <cmath>
 #include <vector>
 
@@ -29,15 +29,14 @@ int era(int n)
 
 int main() 
 {
-   auto start = high_resolution_clock::now();
-
+       clock_t start_time = clock();
     int n = 1000000;  
     cout << era(n) << endl;
 
-  auto stop = high_resolution_clock::now();
-  auto duration = duration_cast<microseconds>(stop - start);
+  clock_t end_time = std::clock();
+    double execution_time = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
 
-  cout << duration.count() << endl;
+  cout << execution_time << endl;
 
     return 0;
 }
