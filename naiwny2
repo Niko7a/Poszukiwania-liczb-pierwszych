@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ int nai(int n)
     {
 
         bool lp = true;
-        for (int i = 2; i < k; i++) 
+        for (int i = 3; i < k; i+=2) 
         {
             if (k % i == 0) 
             {
